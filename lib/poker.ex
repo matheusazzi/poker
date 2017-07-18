@@ -1,24 +1,12 @@
 defmodule Poker do
-
-  def compare([[], []]) do
-    :no_winner
-  end
-
-  def compare([first_hand, []]) do
-    first_hand
-  end
-
-  def compare([first_hand, second_hand]) do
-    { _, first_max } = Hand.high_card(first_hand)
-    { _, second_max } = Hand.high_card(second_hand)
+  def winner(hand1, hand2) do
+    first_hand_rank = Rank.rank(hand1)
+    second_hand_rank = Rank.rank(hand2)
 
     cond do
-      first_max == second_max ->
-        { _, first_max } = Hand.high_card(first_hand)
-        { _, second_max } = Hand.high_card(second_hand)
-
-      first_max > second_max -> first_hand
-      true -> second_hand
+      first_hand_rank > second_hand_rank -> hand1
+      first_hand_rank < second_hand_rank -> hand2
+      true -> :draw
     end
   end
 end
