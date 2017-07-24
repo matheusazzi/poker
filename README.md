@@ -1,6 +1,6 @@
 # Poker
 
-**TODO: Add description**
+- [Reference](http://exercism.io/exercises/elixir/poker/readme)
 
 ## Installation
 
