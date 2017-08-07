@@ -29,4 +29,20 @@ defmodule HandTest do
   test "!not !#is_pair" do
     assert Hand.is_pair([{:a, 2}, {:b, 9}, {:c, 3}, {:c, 4}, {:c, 5}]) == false
   end
+
+  test "#is_full_house" do
+    assert Hand.is_full_house([{:a, 2}, {:c, 3}, {:a, 3}, {:b, 3}, {:b, 2}]) == 3
+    assert Hand.is_full_house([{:c, 3}, {:a, 3}, {:b, 3}, {:a, 2}, {:b, 2}]) == 3
+    assert Hand.is_full_house([{:c, 3}, {:a, 3}, {:a, 2}, {:b, 3}, {:b, 2}]) == 3
+    assert Hand.is_full_house([{:c, 3}, {:b, 3}, {:a, 2}, {:b, 2}, {:a, 3}]) == 3
+    assert Hand.is_full_house([{:b, 3}, {:a, 2}, {:c, 3}, {:b, 2}, {:a, 3}]) == 3
+    assert Hand.is_full_house([{:b, 3}, {:a, 2}, {:b, 2}, {:c, 3}, {:a, 3}]) == 3
+    assert Hand.is_full_house([{:a, 2}, {:b, 3}, {:b, 2}, {:c, 3}, {:a, 3}]) == 3
+    assert Hand.is_full_house([{:a, 2}, {:b, 2}, {:b, 3}, {:c, 3}, {:a, 3}]) == 3
+  end
+
+  test "!not !#is_full_house" do
+    assert Hand.is_full_house([{:a, 2}, {:b, 2}, {:c, 3}, {:c, 4}, {:c, 5}]) == false
+    assert Hand.is_full_house([{:a, 2}, {:b, 9}, {:c, 3}, {:c, 4}, {:c, 5}]) == false
+  end
 end
