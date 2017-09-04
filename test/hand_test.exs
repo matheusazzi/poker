@@ -19,4 +19,14 @@ defmodule HandTest do
   test "!not !#is_pair" do
     assert Hand.is_pair([{:a, 2}, {:b, 9}, {:c, 3}, {:c, 4}, {:c, 5}]) == false
   end
+
+  test "#is_flush" do
+    assert Hand.is_flush([{:a, 1}, {:a, 3}, {:a, 5}, {:a, 7}, {:a, 9}, {:a, 10}]) == true
+    assert Hand.is_flush([{:b, 4},{ :b, 2}, {:b, 5}, {:b, 7}, {:b, 9}, {:b, 10}]) == true
+  end
+  
+  test "!not !#is_flush" do    
+    assert Hand.is_flush([{:a, 1},{ :c, 3}, {:a, 5}, {:a, 7}, {:a, 9}, {:b, 10}]) == false
+  end
+
 end

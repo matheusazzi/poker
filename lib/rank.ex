@@ -1,6 +1,7 @@
 defmodule Rank do
   def rank(hand) do
     cond do
+      Hand.is_flush(hand) -> high_card_rank(hand)
       Hand.is_pair(hand)  -> "#{Hand.is_pair(hand)}#{high_card_rank(hand)}"
       Hand.is_high_card(hand) -> high_card_rank(hand)
     end

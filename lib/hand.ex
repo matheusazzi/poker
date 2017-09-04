@@ -30,6 +30,10 @@ defmodule Hand do
     false
   end
 
+  def is_flush(hand) do
+    1 === Enum.group_by(hand, fn {suite, _} -> suite end) |> Map.size
+  end
+
   defp sort_hand(hand) do
     hand
     |> Enum.sort fn(card1, card2) -> elem(card1, 1) > elem(card2, 1) end
